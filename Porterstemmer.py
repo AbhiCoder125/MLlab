@@ -1,3 +1,16 @@
+import nltk
+from nltk.stem import PorterStemmer
+from nltk.tokenize import word_tokenize
+
+# Download tokenizer data (run once)
+nltk.download('punkt')
+
+def porter_stem_text(text):
+    stemmer = PorterStemmer()
+    tokens = word_tokenize(text)
+    stemmed_words = [stemmer.stem(word) for word in tokens]
+    return stemmed_words
+
 class Porter_Stemmer:
     stem_word: str
     word: str
@@ -61,4 +74,14 @@ if __name__ == "__main__":
         stem: Porter_Stemmer = Porter_Stemmer(word)
         stem.stemming()
         print(f"The stem word for {stem.word} is {stem.stem_word}")
+
+	text = "Porter stemming reduces words like running, runner, and runs to a common base."
+    
+    result = porter_stem_text(text)
+    
+    print("Original Text:")
+    print(text)
+    print("\nStemmed Output:")
+    print(result)
+
     
