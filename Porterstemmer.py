@@ -1,5 +1,5 @@
 class Porter_Stemmer:
-    stem_word: str = ""
+    stem_word: str
     word: str
     m: int
     Suffixes: dict[str, str] = {     
@@ -13,8 +13,9 @@ class Porter_Stemmer:
     
     def __init__(self, word: str) -> None:
         self.word = word.lower()
-        self.stemming()
-    
+        self.m = 0
+        self.stem_word = self.word
+
     def isreplacable(self,suffix: str) -> bool:
         do_replce: bool
 
@@ -58,5 +59,6 @@ if __name__ == "__main__":
 
     for word in words:
         stem: Porter_Stemmer = Porter_Stemmer(word)
+        stem.stemming()
         print(f"The stem word for {stem.word} is {stem.stem_word}")
     
